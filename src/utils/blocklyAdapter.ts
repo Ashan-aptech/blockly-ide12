@@ -1,4 +1,4 @@
-import Blockly from 'blockly';
+import * as Blockly from "blockly";
 import * as En from 'blockly/msg/en';
 import { javascriptGenerator } from 'blockly/javascript';
 import { pythonGenerator } from 'blockly/python';
