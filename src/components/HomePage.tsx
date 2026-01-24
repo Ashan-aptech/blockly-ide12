@@ -140,44 +140,154 @@ const HomePage: React.FC = () => {
         </div>
       </section>
       
-      {/* Interactive Demo */}
+      {/* Interactive Demo - Blockly Workspace */}
       <section className="py-16 px-6 border-t-4 border-[#1E1E1E]">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="mb-8">
-            <WobblyText text="TRY IT OUT" intensity={2} size="lg" />
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-center mb-8">
+            <WobblyText text="INTERACTIVE DEMO" intensity={2} size="lg" />
           </h2>
           
-          <div className="bg-[#252526] border-4 border-[#1E1E1E] p-8 mb-8">
-            <div className="flex flex-col items-center justify-center min-h-[300px]">
-              <div className="mb-6">
-                <div className="text-[#9CDCFE] font-mono text-lg mb-4">
-                  Drag and drop blocks to create your first program:
+          <p className="text-center text-[#9CDCFE] font-mono text-lg mb-6 max-w-3xl mx-auto">
+            Experience the power of visual programming. This live demo shows how blocks translate to real code in multiple languages.
+          </p>
+          
+          <div className="bg-[#252526] border-4 border-[#1E1E1E] p-6 mb-8">
+            {/* Demo Container */}
+            <div className="flex flex-col lg:flex-row gap-6">
+              {/* Blockly Workspace */}
+              <div className="lg:w-2/3 bg-[#1E1E1E] border-2 border-[#007ACC] rounded overflow-hidden">
+                <div className="p-4 bg-[#007ACC] text-white font-mono font-bold">
+                  🧱 Visual Block Editor
                 </div>
-                <div className="flex flex-wrap gap-3 justify-center">
-                  {/* Sample blocks for demo */}
-                  <div className="bg-[#007ACC] px-4 py-2 rounded font-mono text-white border-2 border-[#1E1E1E] cursor-move">
-                    print()
-                  </div>
-                  <div className="bg-[#C586C0] px-4 py-2 rounded font-mono text-white border-2 border-[#1E1E1E] cursor-move">
-                    for i in range()
-                  </div>
-                  <div className="bg-[#5CA65C] px-4 py-2 rounded font-mono text-white border-2 border-[#1E1E1E] cursor-move">
-                    if condition
-                  </div>
-                  <div className="bg-[#CE9178] px-4 py-2 rounded font-mono text-white border-2 border-[#1E1E1E] cursor-move">
-                    set variable
+                <div className="p-2">
+                  {/* Simulated Blockly Workspace */}
+                  <div className="relative bg-white/5 rounded p-2 min-h-[400px]">
+                    {/* Toolbox Sidebar */}
+                    <div className="absolute left-0 top-0 h-full w-40 bg-[#2D2D30] border-r-2 border-[#007ACC] rounded-l">
+                      <div className="p-3">
+                        <div className="text-white font-mono text-sm mb-2">Blocks</div>
+                        {['Logic', 'Loops', 'Math', 'Text', 'Lists', 'Variables', 'Functions'].map((category, idx) => (
+                          <div 
+                            key={category}
+                            className="mb-1 px-3 py-2 text-white/80 font-mono text-xs rounded border-l-4 cursor-pointer hover:bg-white/10 transition-colors"
+                            style={{
+                              borderLeftColor: ['#D1C4E9', '#C0E2C1', '#64B6F7', '#FFCA28', '#5CA65C', '#EF9A9A', '#CE9178'][idx]
+                            }}
+                          >
+                            {category}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Main Workspace with Sample Blocks */}
+                    <div className="ml-40 p-4">
+                      {/* Sample program blocks */}
+                      <div className="flex flex-col gap-4">
+                        {/* Variable set block */}
+                        <div className="flex items-center bg-[#EF9A9A] px-4 py-3 rounded border-2 border-[#F4B8B8] text-white font-mono w-fit">
+                          <span className="mr-2">set</span>
+                          <span className="bg-white/20 px-2 py-1 rounded">Count</span>
+                          <span className="mx-2">to</span>
+                          <div className="bg-[#2196F3] px-2 py-1 rounded">1</div>
+                        </div>
+                        
+                        {/* While loop block */}
+                        <div className="border-l-4 border-[#C0E2C1] pl-4">
+                          <div className="flex items-center bg-[#C0E2C1] px-4 py-3 rounded border-2 border-[#A5D6A7] text-[#1E1E1E] font-mono w-fit">
+                            <span className="mr-2">repeat</span>
+                            <span className="bg-white/30 px-2 py-1 rounded">while</span>
+                            <div className="bg-[#D1C4E9] px-3 py-1 rounded ml-2 flex items-center">
+                              <span className="mr-2">Count</span>
+                              <span className="mx-1">≤</span>
+                              <span className="ml-2 bg-white/30 px-2 py-1 rounded">3</span>
+                            </div>
+                          </div>
+                          
+                          {/* Loop body */}
+                          <div className="ml-8 mt-2 space-y-2">
+                            {/* Print block */}
+                            <div className="flex items-center bg-[#FFCA28] px-4 py-3 rounded border-2 border-[#FFDA69] text-[#1E1E1E] font-mono w-fit">
+                              <span className="mr-2">print</span>
+                              <div className="bg-white/30 px-3 py-1 rounded flex items-center">
+                                <span>"Hello World!"</span>
+                              </div>
+                            </div>
+                            
+                            {/* Increment block */}
+                            <div className="flex items-center bg-[#EF9A9A] px-4 py-3 rounded border-2 border-[#F4B8B8] text-white font-mono w-fit">
+                              <span className="mr-2">set</span>
+                              <span className="bg-white/20 px-2 py-1 rounded">Count</span>
+                              <span className="mx-2">to</span>
+                              <div className="bg-[#2196F3] px-3 py-1 rounded flex items-center">
+                                <span className="mr-2">Count</span>
+                                <span className="mx-1">+</span>
+                                <span className="ml-2">1</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               
-              <div className="mt-8 p-4 bg-[#1E1E1E] border-2 border-[#007ACC] rounded font-mono text-left w-full max-w-md">
-                <div className="text-[#9CDCFE] text-sm mb-2">// Generated Code Preview:</div>
-                <pre className="text-white text-sm overflow-x-auto">
-{`for i in range(5):
-    print("Hello, Blockly!")
-    if i % 2 == 0:
-        print("Even iteration")`}
-                </pre>
+              {/* Code Output */}
+              <div className="lg:w-1/3 flex flex-col">
+                <div className="flex-1 bg-[#1E1E1E] border-2 border-[#5CA65C] rounded overflow-hidden">
+                  <div className="p-4 bg-[#5CA65C] text-white font-mono font-bold">
+                    💻 Generated Code
+                  </div>
+                  
+                  <div className="p-4">
+                    <div className="mb-4">
+                      <div className="text-[#9CDCFE] font-mono text-sm mb-2">Select language:</div>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {['JavaScript', 'Python', 'PHP', 'Lua', 'Dart'].map((lang) => (
+                          <button
+                            key={lang}
+                            className="px-3 py-1 bg-[#252526] text-white/80 font-mono text-xs rounded border border-[#007ACC] hover:bg-[#007ACC] hover:text-white transition-colors"
+                          >
+                            {lang}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="bg-[#0E0E0E] rounded p-4 font-mono text-sm overflow-x-auto">
+                      <div className="text-[#569CD6]">var <span className="text-[#4EC9B0]">Count</span>;</div>
+                      <div className="text-[#D4D4D4]"><br /></div>
+                      <div className="text-[#D4D4D4]"><span className="text-[#4EC9B0]">Count</span> = <span className="text-[#B5CEA8]">1</span>;</div>
+                      <div className="text-[#D4D4D4]">
+                        <span className="text-[#C586C0]">while</span> (<span className="text-[#4EC9B0]">Count</span> <span className="text-[#D4D4D4]">&lt;=</span> <span className="text-[#B5CEA8]">3</span>) {'{'}
+                      </div>
+                      <div className="text-[#D4D4D4] ml-4">
+                        <span className="text-[#9CDCFE]">window</span>.<span className="text-[#DCDCAA]">alert</span>(<span className="text-[#CE9178]">'Hello World!'</span>);
+                      </div>
+                      <div className="text-[#D4D4D4] ml-4">
+                        <span className="text-[#4EC9B0]">Count</span> = <span className="text-[#4EC9B0]">Count</span> + <span className="text-[#B5CEA8]">1</span>;
+                      </div>
+                      <div className="text-[#D4D4D4]">{'}'}</div>
+                    </div>
+                    
+                    {/* Run Button */}
+                    <div className="mt-6 flex justify-center">
+                      <button className="flex items-center gap-2 px-6 py-3 bg-[#007ACC] text-white font-mono font-bold rounded border-2 border-[#1E1E1E] hover:bg-[#005A9E] transition-colors">
+                        <span className="text-xl">▶️</span>
+                        Run Code
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-4 p-4 bg-[#1E1E1E] border-2 border-[#C586C0] rounded">
+                  <div className="text-[#C586C0] font-mono text-sm mb-2">💡 What this program does:</div>
+                  <div className="text-white/80 font-mono text-xs">
+                    This program initializes a counter variable to 1, then enters a loop that runs 3 times. 
+                    Each iteration displays "Hello World!" in an alert box and increments the counter.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
